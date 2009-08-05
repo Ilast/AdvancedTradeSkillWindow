@@ -1,4 +1,4 @@
--- Advanced Trade Skill Window v0.7.2
+-- Advanced Trade Skill Window v0.7.6
 -- copyright 2006 by Rene Schneider (Slarti on EU-Blackhand)
 
 -- main script file
@@ -60,14 +60,14 @@ local atsw_subclassfilter={};
 local atsw_subclassfiltered={};
 local atsw_updating=false;
 local atsw_incombat=false;
-atsw_bankopened=false;
+local atsw_bankopened=false;
 local atsw_queueditemlist={};
 local atsw_temporaryitemlist={};
-atsw_queue={};
+local atsw_queue={};
 local atsw_preventupdate=false;
 local atsw_iscurrentlyenabled=false;
 local atsw_processingname="";
-atsw_processing=false;
+local atsw_processing=false;
 local atsw_processnext=false;
 local atsw_lastremoved="";
 local atsw_missingitems={};
@@ -1485,10 +1485,10 @@ end
 function ATSW_SpellcastInterrupted()
 	if(atsw_processing==true) then 
 		atsw_working=false;
-		if(atsw_lastremoved) then
-			ATSW_AddJobFirst(atsw_lastremoved,1);
-			ATSWFrame_UpdateQueue();
-		end
+		--if(atsw_lastremoved) then
+		--	ATSW_AddJobFirst(atsw_lastremoved,1);
+		--	ATSWFrame_UpdateQueue();
+		--end
 		--if(atsw_retries<ATSW_MAX_RETRIES) then
 		--	atsw_retries=atsw_retries+1;
 		--	atsw_retry=true;

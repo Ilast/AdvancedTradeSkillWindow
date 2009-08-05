@@ -1,6 +1,6 @@
-Advanced Trade Skill Window v0.7.5
+Advanced Trade Skill Window v0.7.6
 a World of Warcraft UI Addon
-written 2006-2009 by Rene Schneider (Slarti on EU-Blackhand)
+written 2006 by Rene Schneider (Slarti on EU-Blackhand)
 ----------------------------------------------------------------
 
 1. Installation
@@ -358,5 +358,7 @@ v0.7.4:
 - fixed:   a bug (error message popping up) that could occur while crafting
 
 v0.7.5:
-- fixed:   creating multiple items in a row should now work fine again without having to
-           close and reopen the window
+- fixed:   creating multiple items in a row should now work fine again without having to close and reopen the window
+
+v0.7.6:
+- changed: toc version number updated for patch 3.2

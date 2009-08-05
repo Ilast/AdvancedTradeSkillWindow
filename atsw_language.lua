@@ -1,14 +1,14 @@
-﻿-- Advanced Trade Skill Window v0.7.5
+-- Advanced Trade Skill Window v0.7.6
 -- copyright 2006 by Rene Schneider (Slarti on EU-Blackhand)
 
 -- language file
 
 -- German and English Language by myself
 -- French Language by Nilyn (EU Dalaran Alliance Server)
--- Espa𮪠por Jsr1976-Fili
--- zhCN and zhTW by Diablohu@轻风之语 http://www.dreamgen.cn
+-- Español por Jsr1976-Fili
+-- zhCN and zhTW by Diablohu@è½»é£Žä¹‹è¯­ http://www.dreamgen.cn
 
-ATSW_VERSION = "ATSW v0.7.5 - by Slarti on EU-Blackhand";
+ATSW_VERSION = "ATSW v0.7.6 - by Slarti on EU-Blackhand";
 
 if(GetLocale()=="deDE") then
 	ATSW_SORTBYHEADERS = "nach Kategorien sortieren";
@@ -284,189 +284,189 @@ elseif(GetLocale()=="esES") then
 	ATSW_SCAN_DELAY_FRAME_ABORT = "Abort";
 
 elseif (GetLocale()=="zhCN") then
--- by Diablohu@轻风之语
+-- by Diablohu@è½»é£Žä¹‹è¯­
 -- http://www.dreamgen.cn
-	ATSW_SORTBYHEADERS = "按分类排序";
-	ATSW_SORTBYNAMES = "按名称排序";
-	ATSW_SORTBYDIFFICULTY = "按制作难度排序";
-	ATSW_CUSTOMSORTING = "按自定义分类";
-	ATSW_QUEUE = "列队";
-	ATSW_QUEUEALL = "列队所有";
-	ATSW_DELETELETTER = "删";
-	ATSW_STARTQUEUE = "开始制造";
-	ATSW_STOPQUEUE = "停止制造";
-	ATSW_DELETEQUEUE = "清空队列";
-	ATSW_ITEMSMISSING1 = "制造";
-	ATSW_ITEMSMISSING2 = "缺少的材料：";
-	ATSW_FILTERLABEL = "搜索:";
-	ATSW_REAGENTLIST1 = "制造";
-	ATSW_REAGENTLIST2 = "所需材料：";
-	ATSW_REAGENTFRAMETITLE = "制造队列中物品所需材料";
-	ATSW_REAGENTBUTTON = "材料";
-	ATSW_REAGENTFRAME_CH1 = "背包";
-	ATSW_REAGENTFRAME_CH2 = "银行";
-	ATSW_REAGENTFRAME_CH3 = "另角色";
-	ATSW_REAGENTFRAME_CH4 = "可购买";
-	ATSW_ALTLIST1 = "以下角色拥有'";
+	ATSW_SORTBYHEADERS = "æŒ‰åˆ†ç±»æŽ’åº";
+	ATSW_SORTBYNAMES = "æŒ‰åç§°æŽ’åº";
+	ATSW_SORTBYDIFFICULTY = "æŒ‰åˆ¶ä½œéš¾åº¦æŽ’åº";
+	ATSW_CUSTOMSORTING = "æŒ‰è‡ªå®šä¹‰åˆ†ç±»";
+	ATSW_QUEUE = "åˆ—é˜Ÿ";
+	ATSW_QUEUEALL = "åˆ—é˜Ÿæ‰€æœ‰";
+	ATSW_DELETELETTER = "åˆ ";
+	ATSW_STARTQUEUE = "å¼€å§‹åˆ¶é€ ";
+	ATSW_STOPQUEUE = "åœæ­¢åˆ¶é€ ";
+	ATSW_DELETEQUEUE = "æ¸…ç©ºé˜Ÿåˆ—";
+	ATSW_ITEMSMISSING1 = "åˆ¶é€ ";
+	ATSW_ITEMSMISSING2 = "ç¼ºå°‘çš„ææ–™ï¼š";
+	ATSW_FILTERLABEL = "æœç´¢:";
+	ATSW_REAGENTLIST1 = "åˆ¶é€ ";
+	ATSW_REAGENTLIST2 = "æ‰€éœ€ææ–™ï¼š";
+	ATSW_REAGENTFRAMETITLE = "åˆ¶é€ é˜Ÿåˆ—ä¸­ç‰©å“æ‰€éœ€ææ–™";
+	ATSW_REAGENTBUTTON = "ææ–™";
+	ATSW_REAGENTFRAME_CH1 = "èƒŒåŒ…";
+	ATSW_REAGENTFRAME_CH2 = "é“¶è¡Œ";
+	ATSW_REAGENTFRAME_CH3 = "å¦è§’è‰²";
+	ATSW_REAGENTFRAME_CH4 = "å¯è´­ä¹°";
+	ATSW_ALTLIST1 = "ä»¥ä¸‹è§’è‰²æ‹¥æœ‰'";
 	ATSW_ALTLIST2 = "':";
-	ATSW_ALTLIST3 = " (背包) ";
-	ATSW_ALTLIST4 = " (银行) ";
-	ATSW_OPTIONS_TITLE = "ATSW 设置";
-	ATSWOFIB_TEXT = "考虑银行中的材料";
-	ATSWOFIA_TEXT = "考虑其他角色上背包和银行中的材料";
-	ATSWOFIM_TEXT = "考虑可购买的材料";
-	ATSWOFUCB_TEXT = "显示采用以下设置的可制造数";
-	ATSWOFSCB_TEXT = "显示由背包中的原料可制造数和采用以下设置\n的可制造数";
-	ATSWOFTB_TEXT = "开启配方说明";
-	ATSW_OPTIONSBUTTON = "设置";
-	ATSW_BUYREAGENTBUTTON = "从当前商人处购买材料";
-	ATSWOFAB_TEXT = "当与商人对话时自动购买所需材料";
-	ATSW_AUTOBUYMESSAGE = "ATSW 已自动购买如下物品:";
-	ATSW_TOOLTIP_PRODUCABLE = "个可由背包中的材料制造"
-	ATSW_TOOLTIP_NECESSARY = "制作1件此物品所需材料:";
-	ATSW_TOOLTIP_BUYABLE = " (可购买)";
-	ATSW_TOOLTIP_LEGEND = "(背包中的数量 / 银行中的数量 / 其他角色上的数量)";
-	ATSW_CONTINUEQUEUE = "继续制造";
-	ATSW_ABORTQUEUE = "停止制造";
-	ATSWCF_TITLE = "是否继续？";
-	ATSWCF_TEXT = "1.10版本后，制作物品需要一次鼠标点击。单击“确定”以继续。";
-	ATSWCF_TITLE2 = "队列中下一件物品为:";
-	ATSW_CSBUTTON = "编辑分类";
-	ATSW_AUTOBUYBUTTON_TOPTEXT = "该商人出售你所需的材料！";
-	ATSW_AUTOBUYBUTTON_TEXT = "购买材料";
-	ATSW_SHOPPINGLISTFRAMETITLE = "购物清单 - 制作队列中物品所缺少的材料";
-	ATSWOFSLB_TEXT = "在拍卖行中显示购物清单";
-	ATSW_ENCHANT = "附魔";
-	ATSW_ACTIVATIONMESSAGE = "ATSW 已";
-	ATSW_ACTIVATED = "针对当前商业技能开启";
-	ATSW_DEACTIVATED = "针对当前商业技能关闭";
-	ATSW_SCAN_MINLEVEL = "^需要等级 (%d+)";
-	ATSW_QUEUESDELETED = "已清空所有队列";
+	ATSW_ALTLIST3 = " (èƒŒåŒ…) ";
+	ATSW_ALTLIST4 = " (é“¶è¡Œ) ";
+	ATSW_OPTIONS_TITLE = "ATSW è®¾ç½®";
+	ATSWOFIB_TEXT = "è€ƒè™‘é“¶è¡Œä¸­çš„ææ–™";
+	ATSWOFIA_TEXT = "è€ƒè™‘å…¶ä»–è§’è‰²ä¸ŠèƒŒåŒ…å’Œé“¶è¡Œä¸­çš„ææ–™";
+	ATSWOFIM_TEXT = "è€ƒè™‘å¯è´­ä¹°çš„ææ–™";
+	ATSWOFUCB_TEXT = "æ˜¾ç¤ºé‡‡ç”¨ä»¥ä¸‹è®¾ç½®çš„å¯åˆ¶é€ æ•°";
+	ATSWOFSCB_TEXT = "æ˜¾ç¤ºç”±èƒŒåŒ…ä¸­çš„åŽŸæ–™å¯åˆ¶é€ æ•°å’Œé‡‡ç”¨ä»¥ä¸‹è®¾ç½®\nçš„å¯åˆ¶é€ æ•°";
+	ATSWOFTB_TEXT = "å¼€å¯é…æ–¹è¯´æ˜Ž";
+	ATSW_OPTIONSBUTTON = "è®¾ç½®";
+	ATSW_BUYREAGENTBUTTON = "ä»Žå½“å‰å•†äººå¤„è´­ä¹°ææ–™";
+	ATSWOFAB_TEXT = "å½“ä¸Žå•†äººå¯¹è¯æ—¶è‡ªåŠ¨è´­ä¹°æ‰€éœ€ææ–™";
+	ATSW_AUTOBUYMESSAGE = "ATSW å·²è‡ªåŠ¨è´­ä¹°å¦‚ä¸‹ç‰©å“:";
+	ATSW_TOOLTIP_PRODUCABLE = "ä¸ªå¯ç”±èƒŒåŒ…ä¸­çš„ææ–™åˆ¶é€ "
+	ATSW_TOOLTIP_NECESSARY = "åˆ¶ä½œ1ä»¶æ­¤ç‰©å“æ‰€éœ€ææ–™:";
+	ATSW_TOOLTIP_BUYABLE = " (å¯è´­ä¹°)";
+	ATSW_TOOLTIP_LEGEND = "(èƒŒåŒ…ä¸­çš„æ•°é‡ / é“¶è¡Œä¸­çš„æ•°é‡ / å…¶ä»–è§’è‰²ä¸Šçš„æ•°é‡)";
+	ATSW_CONTINUEQUEUE = "ç»§ç»­åˆ¶é€ ";
+	ATSW_ABORTQUEUE = "åœæ­¢åˆ¶é€ ";
+	ATSWCF_TITLE = "æ˜¯å¦ç»§ç»­ï¼Ÿ";
+	ATSWCF_TEXT = "1.10ç‰ˆæœ¬åŽï¼Œåˆ¶ä½œç‰©å“éœ€è¦ä¸€æ¬¡é¼ æ ‡ç‚¹å‡»ã€‚å•å‡»â€œç¡®å®šâ€ä»¥ç»§ç»­ã€‚";
+	ATSWCF_TITLE2 = "é˜Ÿåˆ—ä¸­ä¸‹ä¸€ä»¶ç‰©å“ä¸º:";
+	ATSW_CSBUTTON = "ç¼–è¾‘åˆ†ç±»";
+	ATSW_AUTOBUYBUTTON_TOPTEXT = "è¯¥å•†äººå‡ºå”®ä½ æ‰€éœ€çš„ææ–™ï¼";
+	ATSW_AUTOBUYBUTTON_TEXT = "è´­ä¹°ææ–™";
+	ATSW_SHOPPINGLISTFRAMETITLE = "è´­ç‰©æ¸…å• - åˆ¶ä½œé˜Ÿåˆ—ä¸­ç‰©å“æ‰€ç¼ºå°‘çš„ææ–™";
+	ATSWOFSLB_TEXT = "åœ¨æ‹å–è¡Œä¸­æ˜¾ç¤ºè´­ç‰©æ¸…å•";
+	ATSW_ENCHANT = "é™„é­”";
+	ATSW_ACTIVATIONMESSAGE = "ATSW å·²";
+	ATSW_ACTIVATED = "é’ˆå¯¹å½“å‰å•†ä¸šæŠ€èƒ½å¼€å¯";
+	ATSW_DEACTIVATED = "é’ˆå¯¹å½“å‰å•†ä¸šæŠ€èƒ½å…³é—­";
+	ATSW_SCAN_MINLEVEL = "^éœ€è¦ç­‰çº§ (%d+)";
+	ATSW_QUEUESDELETED = "å·²æ¸…ç©ºæ‰€æœ‰é˜Ÿåˆ—";
 	ATSW_SHOPPINGLIST_HIDE_HELP = "Click this button to hide the shopping list. Click it with your shift key pressed to clear all ATSW queues on all characters.";
 
-	ATSW_ALLREAGENTLISTFRAMETITLE = "ATSW - 材料表";
-	ATSW_ALLREAGENTLISTFRAMETITLE2 = "以下角色目前拥有需要的材料：";
-	ATSW_ALLREAGENTLISTCHARDROPDOWNEMPTY = "无队列";
-	ATSW_ALLREAGENTLISTFRAME_CH1 = "在 ";
-	ATSW_ALLREAGENTLISTFRAME_CH3 = "在其他角色";
-	ATSW_ALLREAGENTLISTFRAME_CH4 = "可购买";
-	ATSW_GETFROMBANK = "从银行中取出材料";
-	ATSWOFRLB_TEXT = "如果任意角色的制造队列中存有队列，在访问银行时自动\n打开材料列表。";
+	ATSW_ALLREAGENTLISTFRAMETITLE = "ATSW - ææ–™è¡¨";
+	ATSW_ALLREAGENTLISTFRAMETITLE2 = "ä»¥ä¸‹è§’è‰²ç›®å‰æ‹¥æœ‰éœ€è¦çš„ææ–™ï¼š";
+	ATSW_ALLREAGENTLISTCHARDROPDOWNEMPTY = "æ— é˜Ÿåˆ—";
+	ATSW_ALLREAGENTLISTFRAME_CH1 = "åœ¨ ";
+	ATSW_ALLREAGENTLISTFRAME_CH3 = "åœ¨å…¶ä»–è§’è‰²";
+	ATSW_ALLREAGENTLISTFRAME_CH4 = "å¯è´­ä¹°";
+	ATSW_GETFROMBANK = "ä»Žé“¶è¡Œä¸­å–å‡ºææ–™";
+	ATSWOFRLB_TEXT = "å¦‚æžœä»»æ„è§’è‰²çš„åˆ¶é€ é˜Ÿåˆ—ä¸­å­˜æœ‰é˜Ÿåˆ—ï¼Œåœ¨è®¿é—®é“¶è¡Œæ—¶è‡ªåŠ¨\næ‰“å¼€ææ–™åˆ—è¡¨ã€‚";
 	ATSWOFNRLB_TEXT = "Use compact recipe links instead of multi-line links";
 
 	atsw_blacklist = {
-		[1] = "轻皮",
-		[2] = "中皮",
-		[3] = "重皮",
-		[4] = "厚皮",
-		[5] = "硬甲皮",
-		[6] = "境外皮",
+		[1] = "è½»çš®",
+		[2] = "ä¸­çš®",
+		[3] = "é‡çš®",
+		[4] = "åŽšçš®",
+		[5] = "ç¡¬ç”²çš®",
+		[6] = "å¢ƒå¤–çš®",
 	};
 
-	ATSWCS_TITLE = "Advanced Trade Skill Window - 自定义分类编辑器";
-	ATSWCS_TRADESKILLISTTITLE = "未分类";
-	ATSWCS_CATEGORYLISTTITLE = "已分类";
-	ATSWCS_ADDCATEGORY = "新建分类";
-	ATSWCS_NOTHINGINCATEGORY = "< 空 >";
-	ATSWCS_UNCATEGORIZED = "未分类";
+	ATSWCS_TITLE = "Advanced Trade Skill Window - è‡ªå®šä¹‰åˆ†ç±»ç¼–è¾‘å™¨";
+	ATSWCS_TRADESKILLISTTITLE = "æœªåˆ†ç±»";
+	ATSWCS_CATEGORYLISTTITLE = "å·²åˆ†ç±»";
+	ATSWCS_ADDCATEGORY = "æ–°å»ºåˆ†ç±»";
+	ATSWCS_NOTHINGINCATEGORY = "< ç©º >";
+	ATSWCS_UNCATEGORIZED = "æœªåˆ†ç±»";
 
-	ATSW_SCAN_DELAY_FRAME_TITLE = "ATSW 配方扫描";
-	ATSW_SCAN_DELAY_FRAME_SUBTITLE = "ATSW 正在扫描您的配方以将其从服务器保存入本地缓存中";
-	ATSW_SCAN_DELAY_FRAME_INITIALIZING = "初始化...";
-	ATSW_SCAN_DELAY_FRAME_SKIP = "跳过";
-	ATSW_SCAN_DELAY_FRAME_ABORT = "停止";
+	ATSW_SCAN_DELAY_FRAME_TITLE = "ATSW é…æ–¹æ‰«æ";
+	ATSW_SCAN_DELAY_FRAME_SUBTITLE = "ATSW æ­£åœ¨æ‰«ææ‚¨çš„é…æ–¹ä»¥å°†å…¶ä»ŽæœåŠ¡å™¨ä¿å­˜å…¥æœ¬åœ°ç¼“å­˜ä¸­";
+	ATSW_SCAN_DELAY_FRAME_INITIALIZING = "åˆå§‹åŒ–...";
+	ATSW_SCAN_DELAY_FRAME_SKIP = "è·³è¿‡";
+	ATSW_SCAN_DELAY_FRAME_ABORT = "åœæ­¢";
 
 elseif (GetLocale()=="zhTW") then
--- 月野兔@語風
-	ATSW_SORTBYHEADERS = "按照分類排序";
-	ATSW_SORTBYNAMES = "按照名字排序";
-	ATSW_SORTBYDIFFICULTY = "按照難度排序";
-	ATSW_CUSTOMSORTING = "自訂排序";
-	ATSW_QUEUE = "排程";
-	ATSW_QUEUEALL = "全部排程";
-	ATSW_DELETELETTER = "刪";
-	ATSW_STARTQUEUE = "處理排程";
-	ATSW_STOPQUEUE = "停止處理";
-	ATSW_DELETEQUEUE = "清除排程";
-	ATSW_ITEMSMISSING1 = "需要下列物品才能製作 ";
+-- æœˆé‡Žå…”@èªžé¢¨
+	ATSW_SORTBYHEADERS = "æŒ‰ç…§åˆ†é¡žæŽ’åº";
+	ATSW_SORTBYNAMES = "æŒ‰ç…§åå­—æŽ’åº";
+	ATSW_SORTBYDIFFICULTY = "æŒ‰ç…§é›£åº¦æŽ’åº";
+	ATSW_CUSTOMSORTING = "è‡ªè¨‚æŽ’åº";
+	ATSW_QUEUE = "æŽ’ç¨‹";
+	ATSW_QUEUEALL = "å…¨éƒ¨æŽ’ç¨‹";
+	ATSW_DELETELETTER = "åˆª";
+	ATSW_STARTQUEUE = "è™•ç†æŽ’ç¨‹";
+	ATSW_STOPQUEUE = "åœæ­¢è™•ç†";
+	ATSW_DELETEQUEUE = "æ¸…é™¤æŽ’ç¨‹";
+	ATSW_ITEMSMISSING1 = "éœ€è¦ä¸‹åˆ—ç‰©å“æ‰èƒ½è£½ä½œ ";
 	ATSW_ITEMSMISSING2 = ":";
-	ATSW_FILTERLABEL = "過濾:";
-	ATSW_REAGENTLIST1 = "為了製作 1x ";
-	ATSW_REAGENTLIST2 = " 需要下列材料:";
-	ATSW_REAGENTFRAMETITLE = "需要下列材料才能處理排程:";
-	ATSW_REAGENTBUTTON = "材料";
-	ATSW_REAGENTFRAME_CH1 = "包包";
-	ATSW_REAGENTFRAME_CH2 = "銀行";
-	ATSW_REAGENTFRAME_CH3 = "其他角色";
-	ATSW_REAGENTFRAME_CH4 = "商人";
-	ATSW_ALTLIST1 = "以下角色擁有 '";
+	ATSW_FILTERLABEL = "éŽæ¿¾:";
+	ATSW_REAGENTLIST1 = "ç‚ºäº†è£½ä½œ 1x ";
+	ATSW_REAGENTLIST2 = " éœ€è¦ä¸‹åˆ—ææ–™:";
+	ATSW_REAGENTFRAMETITLE = "éœ€è¦ä¸‹åˆ—ææ–™æ‰èƒ½è™•ç†æŽ’ç¨‹:";
+	ATSW_REAGENTBUTTON = "ææ–™";
+	ATSW_REAGENTFRAME_CH1 = "åŒ…åŒ…";
+	ATSW_REAGENTFRAME_CH2 = "éŠ€è¡Œ";
+	ATSW_REAGENTFRAME_CH3 = "å…¶ä»–è§’è‰²";
+	ATSW_REAGENTFRAME_CH4 = "å•†äºº";
+	ATSW_ALTLIST1 = "ä»¥ä¸‹è§’è‰²æ“æœ‰ '";
 	ATSW_ALTLIST2 = "':";
-	ATSW_ALTLIST3 = " 此角色的包包 ";
-	ATSW_ALTLIST4 = " 此角色的銀行 ";
-	ATSW_OPTIONS_TITLE = "ATSW 選項";
-	ATSWOFIB_TEXT = "計算可製作的物品數量時\n將你銀行裡的物品納入考慮";
-	ATSWOFIA_TEXT = "計算可製作的物品數量時\n將你其他角色的銀行和包包裡的物品納入考慮";
-	ATSWOFIM_TEXT = "計算可製作的物品數量時\n將可從商店購買的物品納入考慮";
-	ATSWOFUCB_TEXT = "只顯示總共可製作的物品的數量,\n按照下列規則";
-	ATSWOFSCB_TEXT = "顯示包包裡現有材料可製作的物品的數量,\n再按照下列規則顯示另一個數量";
-	ATSWOFTB_TEXT = "開啟配方小提示";
-	ATSW_OPTIONSBUTTON = "選項";
-	ATSW_BUYREAGENTBUTTON = "向目前選中的商人購買材料";
-	ATSWOFAB_TEXT = "對商人說話時,\n自動向商人購買可以買到的林料";
-	ATSW_AUTOBUYMESSAGE = "ATSW 已經自動購買了下列物品:";
-	ATSW_TOOLTIP_PRODUCABLE = "可利用包包裡現有的材料製作的數量: "
-	ATSW_TOOLTIP_NECESSARY = "想製作的話, 需要以下材料:";
-	ATSW_TOOLTIP_BUYABLE = " (可以用買的)";
-	ATSW_TOOLTIP_LEGEND = "(包包裡有幾個 / 銀行裡有幾個 / 其他角色有幾個)";
-	ATSW_CONTINUEQUEUE = "繼續排程";
-	ATSW_ABORTQUEUE = "放棄";
-	ATSWCF_TITLE = "要繼續排程嗎?";
-	ATSWCF_TEXT = "從 patch 1.10 起, 要點一下按鈕才能製作物品. 按一下「繼續」就可以接著製作物品.";
-	ATSWCF_TITLE2 = "排程裡下一個要製作的物品:";
-	ATSW_CSBUTTON = "編輯";
-	ATSW_AUTOBUYBUTTON_TOPTEXT = "這位商人有你需要的材料";
-	ATSW_AUTOBUYBUTTON_TEXT = "購買材料";
-	ATSW_SHOPPINGLISTFRAMETITLE = "以下是製作 ATSW 排程裡所有的物品需要的材料的購物清單:";
-	ATSWOFSLB_TEXT = "在拍賣場裡顯示購物清單";
-	ATSW_ENCHANT = "附魔";
-	ATSW_ACTIVATIONMESSAGE = "ATSW 已經";
-	ATSW_ACTIVATED = "為目前的交易技能啟動";
-	ATSW_DEACTIVATED = "為目前的交易技能取消";
-	ATSW_SCAN_MINLEVEL = "^需要等級 (%d+)";
-	ATSW_QUEUESDELETED = "所有儲存的排程已經刪除";
+	ATSW_ALTLIST3 = " æ­¤è§’è‰²çš„åŒ…åŒ… ";
+	ATSW_ALTLIST4 = " æ­¤è§’è‰²çš„éŠ€è¡Œ ";
+	ATSW_OPTIONS_TITLE = "ATSW é¸é …";
+	ATSWOFIB_TEXT = "è¨ˆç®—å¯è£½ä½œçš„ç‰©å“æ•¸é‡æ™‚\nå°‡ä½ éŠ€è¡Œè£¡çš„ç‰©å“ç´å…¥è€ƒæ…®";
+	ATSWOFIA_TEXT = "è¨ˆç®—å¯è£½ä½œçš„ç‰©å“æ•¸é‡æ™‚\nå°‡ä½ å…¶ä»–è§’è‰²çš„éŠ€è¡Œå’ŒåŒ…åŒ…è£¡çš„ç‰©å“ç´å…¥è€ƒæ…®";
+	ATSWOFIM_TEXT = "è¨ˆç®—å¯è£½ä½œçš„ç‰©å“æ•¸é‡æ™‚\nå°‡å¯å¾žå•†åº—è³¼è²·çš„ç‰©å“ç´å…¥è€ƒæ…®";
+	ATSWOFUCB_TEXT = "åªé¡¯ç¤ºç¸½å…±å¯è£½ä½œçš„ç‰©å“çš„æ•¸é‡,\næŒ‰ç…§ä¸‹åˆ—è¦å‰‡";
+	ATSWOFSCB_TEXT = "é¡¯ç¤ºåŒ…åŒ…è£¡ç¾æœ‰ææ–™å¯è£½ä½œçš„ç‰©å“çš„æ•¸é‡,\nå†æŒ‰ç…§ä¸‹åˆ—è¦å‰‡é¡¯ç¤ºå¦ä¸€å€‹æ•¸é‡";
+	ATSWOFTB_TEXT = "é–‹å•Ÿé…æ–¹å°æç¤º";
+	ATSW_OPTIONSBUTTON = "é¸é …";
+	ATSW_BUYREAGENTBUTTON = "å‘ç›®å‰é¸ä¸­çš„å•†äººè³¼è²·ææ–™";
+	ATSWOFAB_TEXT = "å°å•†äººèªªè©±æ™‚,\nè‡ªå‹•å‘å•†äººè³¼è²·å¯ä»¥è²·åˆ°çš„æž—æ–™";
+	ATSW_AUTOBUYMESSAGE = "ATSW å·²ç¶“è‡ªå‹•è³¼è²·äº†ä¸‹åˆ—ç‰©å“:";
+	ATSW_TOOLTIP_PRODUCABLE = "å¯åˆ©ç”¨åŒ…åŒ…è£¡ç¾æœ‰çš„ææ–™è£½ä½œçš„æ•¸é‡: "
+	ATSW_TOOLTIP_NECESSARY = "æƒ³è£½ä½œçš„è©±, éœ€è¦ä»¥ä¸‹ææ–™:";
+	ATSW_TOOLTIP_BUYABLE = " (å¯ä»¥ç”¨è²·çš„)";
+	ATSW_TOOLTIP_LEGEND = "(åŒ…åŒ…è£¡æœ‰å¹¾å€‹ / éŠ€è¡Œè£¡æœ‰å¹¾å€‹ / å…¶ä»–è§’è‰²æœ‰å¹¾å€‹)";
+	ATSW_CONTINUEQUEUE = "ç¹¼çºŒæŽ’ç¨‹";
+	ATSW_ABORTQUEUE = "æ”¾æ£„";
+	ATSWCF_TITLE = "è¦ç¹¼çºŒæŽ’ç¨‹å—Ž?";
+	ATSWCF_TEXT = "å¾ž patch 1.10 èµ·, è¦é»žä¸€ä¸‹æŒ‰éˆ•æ‰èƒ½è£½ä½œç‰©å“. æŒ‰ä¸€ä¸‹ã€Œç¹¼çºŒã€å°±å¯ä»¥æŽ¥è‘—è£½ä½œç‰©å“.";
+	ATSWCF_TITLE2 = "æŽ’ç¨‹è£¡ä¸‹ä¸€å€‹è¦è£½ä½œçš„ç‰©å“:";
+	ATSW_CSBUTTON = "ç·¨è¼¯";
+	ATSW_AUTOBUYBUTTON_TOPTEXT = "é€™ä½å•†äººæœ‰ä½ éœ€è¦çš„ææ–™";
+	ATSW_AUTOBUYBUTTON_TEXT = "è³¼è²·ææ–™";
+	ATSW_SHOPPINGLISTFRAMETITLE = "ä»¥ä¸‹æ˜¯è£½ä½œ ATSW æŽ’ç¨‹è£¡æ‰€æœ‰çš„ç‰©å“éœ€è¦çš„ææ–™çš„è³¼ç‰©æ¸…å–®:";
+	ATSWOFSLB_TEXT = "åœ¨æ‹è³£å ´è£¡é¡¯ç¤ºè³¼ç‰©æ¸…å–®";
+	ATSW_ENCHANT = "é™„é­”";
+	ATSW_ACTIVATIONMESSAGE = "ATSW å·²ç¶“";
+	ATSW_ACTIVATED = "ç‚ºç›®å‰çš„äº¤æ˜“æŠ€èƒ½å•Ÿå‹•";
+	ATSW_DEACTIVATED = "ç‚ºç›®å‰çš„äº¤æ˜“æŠ€èƒ½å–æ¶ˆ";
+	ATSW_SCAN_MINLEVEL = "^éœ€è¦ç­‰ç´š (%d+)";
+	ATSW_QUEUESDELETED = "æ‰€æœ‰å„²å­˜çš„æŽ’ç¨‹å·²ç¶“åˆªé™¤";
 	ATSW_SHOPPINGLIST_HIDE_HELP = "Click this button to hide the shopping list. Click it with your shift key pressed to clear all ATSW queues on all characters.";
 
-	ATSW_ALLREAGENTLISTFRAMETITLE = "ATSW - 排程需要的材料";
-	ATSW_ALLREAGENTLISTFRAMETITLE2 = "以下角色目前擁有排程的物品:";
-	ATSW_ALLREAGENTLISTCHARDROPDOWNEMPTY = "沒有排程";
-	ATSW_ALLREAGENTLISTFRAME_CH1 = "在 ";
-	ATSW_ALLREAGENTLISTFRAME_CH3 = "在其他角色";
-	ATSW_ALLREAGENTLISTFRAME_CH4 = "在商人";
-	ATSW_GETFROMBANK = "從銀行取得材料";
-	ATSWOFRLB_TEXT = "如果你任何一個角色有儲存排程,\n在銀行時自動開啟材料清單.";
+	ATSW_ALLREAGENTLISTFRAMETITLE = "ATSW - æŽ’ç¨‹éœ€è¦çš„ææ–™";
+	ATSW_ALLREAGENTLISTFRAMETITLE2 = "ä»¥ä¸‹è§’è‰²ç›®å‰æ“æœ‰æŽ’ç¨‹çš„ç‰©å“:";
+	ATSW_ALLREAGENTLISTCHARDROPDOWNEMPTY = "æ²’æœ‰æŽ’ç¨‹";
+	ATSW_ALLREAGENTLISTFRAME_CH1 = "åœ¨ ";
+	ATSW_ALLREAGENTLISTFRAME_CH3 = "åœ¨å…¶ä»–è§’è‰²";
+	ATSW_ALLREAGENTLISTFRAME_CH4 = "åœ¨å•†äºº";
+	ATSW_GETFROMBANK = "å¾žéŠ€è¡Œå–å¾—ææ–™";
+	ATSWOFRLB_TEXT = "å¦‚æžœä½ ä»»ä½•ä¸€å€‹è§’è‰²æœ‰å„²å­˜æŽ’ç¨‹,\nåœ¨éŠ€è¡Œæ™‚è‡ªå‹•é–‹å•Ÿææ–™æ¸…å–®.";
 	ATSWOFNRLB_TEXT = "Use compact recipe links instead of multi-line links";
 
 	atsw_blacklist = {
-		[1] = "輕皮",
-		[2] = "中皮",
-		[3] = "重皮",
-		[4] = "厚皮",
-		[5] = "硬甲皮",
-		[6] = "境外皮革",
+		[1] = "è¼•çš®",
+		[2] = "ä¸­çš®",
+		[3] = "é‡çš®",
+		[4] = "åŽšçš®",
+		[5] = "ç¡¬ç”²çš®",
+		[6] = "å¢ƒå¤–çš®é©",
 	};
 
-	ATSWCS_TITLE = "Advanced Trade Skill Window - 配方排列編輯器";
-	ATSWCS_TRADESKILLISTTITLE = "未分類的配方";
-	ATSWCS_CATEGORYLISTTITLE = "已分類的配方";
-	ATSWCS_ADDCATEGORY = "新類別";
-	ATSWCS_NOTHINGINCATEGORY = "< 空 >";
-	ATSWCS_UNCATEGORIZED = "未分類";
+	ATSWCS_TITLE = "Advanced Trade Skill Window - é…æ–¹æŽ’åˆ—ç·¨è¼¯å™¨";
+	ATSWCS_TRADESKILLISTTITLE = "æœªåˆ†é¡žçš„é…æ–¹";
+	ATSWCS_CATEGORYLISTTITLE = "å·²åˆ†é¡žçš„é…æ–¹";
+	ATSWCS_ADDCATEGORY = "æ–°é¡žåˆ¥";
+	ATSWCS_NOTHINGINCATEGORY = "< ç©º >";
+	ATSWCS_UNCATEGORIZED = "æœªåˆ†é¡ž";
 
-	ATSW_SCAN_DELAY_FRAME_TITLE = "ATSW 配方掃描";
-	ATSW_SCAN_DELAY_FRAME_SUBTITLE = "ATSW 正在從伺服器取得您的配方並存入本機快取中";
-	ATSW_SCAN_DELAY_FRAME_INITIALIZING = "初始化...";
-	ATSW_SCAN_DELAY_FRAME_SKIP = "略過";
-	ATSW_SCAN_DELAY_FRAME_ABORT = "放棄";
+	ATSW_SCAN_DELAY_FRAME_TITLE = "ATSW é…æ–¹æŽƒæ";
+	ATSW_SCAN_DELAY_FRAME_SUBTITLE = "ATSW æ­£åœ¨å¾žä¼ºæœå™¨å–å¾—æ‚¨çš„é…æ–¹ä¸¦å­˜å…¥æœ¬æ©Ÿå¿«å–ä¸­";
+	ATSW_SCAN_DELAY_FRAME_INITIALIZING = "åˆå§‹åŒ–...";
+	ATSW_SCAN_DELAY_FRAME_SKIP = "ç•¥éŽ";
+	ATSW_SCAN_DELAY_FRAME_ABORT = "æ”¾æ£„";
 
 else
 	ATSW_SORTBYHEADERS = "Order by Categories";

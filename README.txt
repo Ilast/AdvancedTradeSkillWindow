@@ -362,3 +362,12 @@ v0.7.5:
 
 v0.7.6:
 - changed: toc version number updated for patch 3.2
+
+v0.7.7:
+- fixed:   fixed a bug which caused ATSW to block if multiple items are to be created in a row
+- fixed:   if you require an anvil or an additional reagent (or something else) to create a recipe,
+           the corresponding queue entry should not be deleted anymore
+- added:   a new checkbox which allows direct filtering of the recipe list for recipes which you can
+           create with available materials (similar, but not entirely identical to the checkbox
+	   in the standard tradeskill window - the ATSW box considers items in your bank, on alts or buyable
+	   stuff too, if you want)

@@ -1,10 +1,7 @@
--- Advanced Trade Skill Window v0.7.6
+-- Advanced Trade Skill Window v0.7.7
 -- copyright 2006 by Rene Schneider (Slarti on EU-Blackhand)
 
 -- main script file
-
--- ATSW is licensed under the GNU General Public License
--- (http://www.gnu.org/licenses/gpl.txt)
 
 
 ATSW_TRADE_SKILLS_DISPLAYED = 23;
@@ -63,7 +60,7 @@ local atsw_incombat=false;
 local atsw_bankopened=false;
 local atsw_queueditemlist={};
 local atsw_temporaryitemlist={};
-local atsw_queue={};
+atsw_queue={};
 local atsw_preventupdate=false;
 local atsw_iscurrentlyenabled=false;
 local atsw_processingname="";
@@ -86,6 +83,7 @@ atsw_savednecessaryitems={};
 atsw_is_sorted=false;
 atsw_prescanned={};
 atsw_newrecipelinks=true;
+atsw_onlycreatable=false;
 
 function ATSW_OnLoad()
 	SLASH_ATSW1 = "/atsw";
@@ -508,15 +506,12 @@ function ATSWFrame_OnEvent()
 	elseif(event=="UI_ERROR_MESSAGE") then
 		if(ATSWFrame:IsVisible()) then
 			if(arg1==INVENTORY_FULL) then
-				ATSW_SpellcastStop();
 				ATSW_SpellcastInterrupted();
 			end
 			if(string.find(arg1,string.sub(SPELL_FAILED_REAGENTS,1,string.len(SPELL_FAILED_REAGENTS)-2),1,true)~=nil) then
-				ATSW_SpellcastStop();
 				ATSW_SpellcastInterrupted();
 			end
 			if(string.find(arg1,string.sub(SPELL_FAILED_REQUIRES_SPELL_FOCUS,1,string.len(SPELL_FAILED_REQUIRES_SPELL_FOCUS)-4),1,true)~=nil) then
-				ATSW_SpellcastStop();
 				ATSW_SpellcastInterrupted();
 			end
 		end
@@ -2130,6 +2125,12 @@ function ATSW_Filter(skillname)
 	if(skillname==nil) then return false; end
 	if(skillname=="") then return true; end
 	local parameters={};
+	if(atsw_onlycreatable) then
+		local possible=ATSW_GetNumItemsPossibleWithInventory(skillname);
+		if(possible<=0) then
+			return false;
+		end
+	end	
 	for w in string.gmatch(atsw_filter, ":[^:]*") do
 		local _, _, param_name, param_value=string.find(w, ":(%a+)%s([^:]*)");
 		if(param_name~=nil) then _, _, param_name=string.find(param_name,"^%s*(.-)%s*$"); end

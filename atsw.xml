@@ -1330,6 +1330,49 @@
                 <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
             </CheckButton>
 
+			<CheckButton name="ATSWOnlyCreatableButton" virtual="true">
+                <Size>
+                    <AbsDimension x="20" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="ATSWFrame">
+                        <Offset>
+                            <AbsDimension x="440" y="-52"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString name="ATSWOnlyCreatableButtonText" inherits="GameFontHighlightSmall" text="ATSW_ONLYCREATABLE">
+                            <Anchors>
+                                <Anchor point="LEFT" relativePoint="RIGHT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnClick>
+                        if(self:GetChecked()) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+							atsw_onlycreatable=true;
+							ATSWFrame_Update();	
+                        else
+							atsw_onlycreatable=false;
+							ATSWFrame_Update();	
+                        end
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+                <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+                <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+                <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+                <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+            </CheckButton>
+
 
 			<Button name="ATSWSkillIcon">
 				<Size>

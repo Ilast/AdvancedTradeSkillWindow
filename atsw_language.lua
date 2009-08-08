@@ -1,4 +1,4 @@
--- Advanced Trade Skill Window v0.7.6
+-- Advanced Trade Skill Window v0.7.7
 -- copyright 2006 by Rene Schneider (Slarti on EU-Blackhand)
 
 -- language file
@@ -8,7 +8,7 @@
 -- Español por Jsr1976-Fili
 -- zhCN and zhTW by Diablohu@è½»é£Žä¹‹è¯­ http://www.dreamgen.cn
 
-ATSW_VERSION = "ATSW v0.7.6 - by Slarti on EU-Blackhand";
+ATSW_VERSION = "ATSW v0.7.7 - by Slarti on EU-Blackhand";
 
 if(GetLocale()=="deDE") then
 	ATSW_SORTBYHEADERS = "nach Kategorien sortieren";
@@ -100,6 +100,8 @@ if(GetLocale()=="deDE") then
 	ATSW_SCAN_DELAY_FRAME_INITIALIZING = "initialisiere...";
 	ATSW_SCAN_DELAY_FRAME_SKIP = "\195\156berspringen";
 	ATSW_SCAN_DELAY_FRAME_ABORT = "Abbrechen";
+
+	ATSW_ONLYCREATABLE = "Material vorhanden";
 
 elseif (GetLocale()=="frFR") then
 	ATSW_SORTBYHEADERS = "Classer par Cat\195\169gories";
@@ -283,6 +285,8 @@ elseif(GetLocale()=="esES") then
 	ATSW_SCAN_DELAY_FRAME_SKIP = "Skip this";
 	ATSW_SCAN_DELAY_FRAME_ABORT = "Abort";
 
+	ATSW_ONLYCREATABLE = "materials available";
+
 elseif (GetLocale()=="zhCN") then
 -- by Diablohu@è½»é£Žä¹‹è¯­
 -- http://www.dreamgen.cn
@@ -376,6 +380,8 @@ elseif (GetLocale()=="zhCN") then
 	ATSW_SCAN_DELAY_FRAME_SKIP = "è·³è¿‡";
 	ATSW_SCAN_DELAY_FRAME_ABORT = "åœæ­¢";
 
+	ATSW_ONLYCREATABLE = "materials available";
+
 elseif (GetLocale()=="zhTW") then
 -- æœˆé‡Žå…”@èªžé¢¨
 	ATSW_SORTBYHEADERS = "æŒ‰ç…§åˆ†é¡žæŽ’åº";
@@ -468,6 +474,7 @@ elseif (GetLocale()=="zhTW") then
 	ATSW_SCAN_DELAY_FRAME_SKIP = "ç•¥éŽ";
 	ATSW_SCAN_DELAY_FRAME_ABORT = "æ”¾æ£„";
 
+	ATSW_ONLYCREATABLE = "materials available";
 else
 	ATSW_SORTBYHEADERS = "Order by Categories";
 	ATSW_SORTBYNAMES = "Order by Names";
@@ -558,4 +565,6 @@ else
 	ATSW_SCAN_DELAY_FRAME_INITIALIZING = "initializing...";
 	ATSW_SCAN_DELAY_FRAME_SKIP = "Skip this";
 	ATSW_SCAN_DELAY_FRAME_ABORT = "Abort";
+
+	ATSW_ONLYCREATABLE = "materials available";
 end

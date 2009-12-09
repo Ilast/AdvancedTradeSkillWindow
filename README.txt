@@ -1,6 +1,6 @@
-Advanced Trade Skill Window v0.7.6
+Advanced Trade Skill Window v0.7.8
 a World of Warcraft UI Addon
-written 2006 by Rene Schneider (Slarti on EU-Blackhand)
+written 2006-2009 by Rene Schneider (Slarti on EU-Blackhand)
 ----------------------------------------------------------------
 
 1. Installation
@@ -371,3 +371,6 @@ v0.7.7:
            create with available materials (similar, but not entirely identical to the checkbox
 	   in the standard tradeskill window - the ATSW box considers items in your bank, on alts or buyable
 	   stuff too, if you want)
+
+v0.7.8:
+- changed: ATSW updated for patch 3.3

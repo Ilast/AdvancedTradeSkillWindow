@@ -1,4 +1,4 @@
--- Advanced Trade Skill Window v0.7.8
+-- Advanced Trade Skill Window v0.8.0
 -- copyright 2006-2009 by Rene Schneider (Slarti on EU-Blackhand)
 
 -- language file
@@ -8,7 +8,7 @@
 -- Español por Jsr1976-Fili
 -- zhCN and zhTW by Diablohu@è½»é£Žä¹‹è¯­ http://www.dreamgen.cn
 
-ATSW_VERSION = "ATSW v0.7.8 - by Slarti on EU-Blackhand";
+ATSW_VERSION = "ATSW v0.8.0 - by Slarti on EU-Blackhand";
 
 if(GetLocale()=="deDE") then
 	ATSW_SORTBYHEADERS = "nach Kategorien sortieren";

@@ -17,14 +17,14 @@
 				self:SetFrameLevel(self:GetFrameLevel() + 1);
 			</OnLoad>
 			<OnClick>
-				ATSWSkillButton_OnClick(arg1);
+				ATSWSkillButton_OnClick(self, button);
 			</OnClick>
 			<OnEnter>
-				getglobal(self:GetName().."SubText"):SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
-				ATSW_DisplayTradeskillTooltip();
+				_G[self:GetName().."SubText"]:SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
+				ATSW_DisplayTradeskillTooltip(self);
 			</OnEnter>
 			<OnLeave>
-				getglobal(self:GetName().."SubText"):SetTextColor(self.r, self.g, self.b);
+				_G[self:GetName().."SubText"]:SetTextColor(self.r, self.g, self.b);
 				ATSWTradeskillTooltip:Hide();
 			</OnLeave>
 		</Scripts>
@@ -398,7 +398,7 @@
 	<Frame name="ATSWCheckerFrame" frameStrata="LOW" enableMouse="false" hidden="true">
     	<Scripts>
     		<OnUpdate>
-    			ATSW_CheckForTradeSkillWindow(arg1);
+    			ATSW_CheckForTradeSkillWindow(self, elapsed);
     		</OnUpdate>
     	</Scripts>
     </Frame>
@@ -1109,10 +1109,10 @@
 						</Anchors>
 						<Scripts>
 							<OnLoad>
-								getglobal(self:GetName()):SetText(ALL);
+								_G[self:GetName()]:SetText(ALL);
 							</OnLoad>
 							<OnClick>
-								ATSWCollapseAllButton_OnClick();
+								ATSWCollapseAllButton_OnClick(self, button);
 							</OnClick>
 						</Scripts>
 					</Button>
@@ -2028,7 +2028,7 @@
 		  ATSW_OnLoad();
           </OnLoad>
           <OnEvent>
-		  ATSWFrame_OnEvent();
+		  ATSWFrame_OnEvent(self, event, ...);
           </OnEvent>
           <OnShow>
           PlaySound("igBackPackOpen");
@@ -2068,7 +2068,7 @@
                 ATSWItemButton_OnEnter(self);
             </OnEnter>
             <OnLeave>
-                ATSWItemButton_OnLeave();
+                ATSWItemButton_OnLeave(self);
             </OnLeave>
         </Scripts>
         <ButtonText name="$parentText" inherits="GameFontNormal" justifyH="left">
@@ -4220,10 +4220,10 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						ATSWAllReagentListCharDropDown_OnLoad();
+						ATSWAllReagentListCharDropDown_OnLoad(self);
 					</OnLoad>
 					<OnShow>
-						ATSWAllReagentListCharDropDown_OnShow();
+						ATSWAllReagentListCharDropDown_OnShow(self);
 					</OnShow>
 				</Scripts>
 			</Frame>
@@ -4473,7 +4473,7 @@
 			<OnEvent>
 			</OnEvent>
 			<OnUpdate>
-				ATSWScanDelayFrame_OnUpdate();
+				ATSWScanDelayFrame_OnUpdate(self, elapsed);
 			</OnUpdate>
     	</Scripts>
 	</Frame>

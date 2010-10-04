@@ -293,10 +293,10 @@ function ATSWFrame_Show()
 	ATSW_ShowWindow();
 end
 
-function ATSW_CheckForTradeSkillWindow(arg1)
+function ATSW_CheckForTradeSkillWindow(self, elapsed)
 	if(ATSWFrame:IsVisible()) then
 		if(atsw_updatedelay>0) then
-			atsw_updatedelay=atsw_updatedelay-arg1;
+			atsw_updatedelay=atsw_updatedelay-elapsed;
 			if(atsw_updatedelay<=0) then
 				ATSWFrame_Update();
 				atsw_updatedelay=0;
@@ -311,7 +311,7 @@ function ATSW_CheckForTradeSkillWindow(arg1)
 	if(atsw_processing==true) then
 		if(atsw_processingtimeout~=0) then
 			if(atsw_processingtimeout>0) then
-				atsw_processingtimeout=atsw_processingtimeout-arg1;
+				atsw_processingtimeout=atsw_processingtimeout-elapsed;
 			else
 				atsw_processingtimeout=0;
 				ATSWQueueStartStopButton:Enable();
@@ -326,7 +326,7 @@ function ATSW_CheckForTradeSkillWindow(arg1)
 		end
 		if(atsw_retry==true) then
 			if(atsw_retrydelay<ATSW_MAX_DELAY) then
-				atsw_retrydelay=atsw_retrydelay+arg1;
+				atsw_retrydelay=atsw_retrydelay+elapsed;
 			else
 				atsw_retrydelay=0;
 				ATSW_ProcessNextQueueItem();
@@ -360,7 +360,7 @@ function ATSW_ShowBlizzardTradeSkillFrame()
 	TradeSkillFrame:ClearAllPoints();
 end
 
-function ATSWFrame_OnEvent()
+function ATSWFrame_OnEvent(self, event, ...)
 	if(event=="TRADE_SKILL_SHOW") then
 		--if(CraftFrame and CraftFrame:IsVisible()) then ATSW_HideWindow(); end
 		--atsw_oldmode=false;
@@ -482,16 +482,20 @@ function ATSWFrame_OnEvent()
 			end
 		end
 	elseif(event=="UNIT_PORTRAIT_UPDATE") then
+		local arg1 = (...);
 		if(arg1=="player") then
 			SetPortraitTexture(ATSWFramePortrait, "player");
 		end
 	elseif(event=="UPDATE_TRADESKILL_RECAST") then
 		ATSWInputBox:SetNumber(GetTradeskillRepeatCount());
 	elseif(event=="UNIT_SPELLCAST_STOP" or event=="UNIT_SPELLCAST_CHANNEL_STOP") then
+		local arg1 = (...);
 		if(arg1=="player") then ATSW_SpellcastStop(); end
 	elseif(event=="UNIT_SPELLCAST_START") then
+		local arg1 = (...);
 		if(arg1=="player") then	ATSW_SpellcastStart(); end
 	elseif(event=="UNIT_SPELLCAST_INTERRUPTED") then
+		local arg1 = (...);
 		if(arg1=="player") then ATSW_SpellcastInterrupted(); end
 	elseif(event=="TRAINER_CLOSED") then
 		ATSW_ResetPossibleItemCounts();
@@ -504,6 +508,7 @@ function ATSWFrame_OnEvent()
 	elseif(event=="PLAYER_LOGOUT") then
 		ATSW_SaveQueue(false);
 	elseif(event=="UI_ERROR_MESSAGE") then
+		local arg1 = (...);
 		if(ATSWFrame:IsVisible()) then
 			if(arg1==INVENTORY_FULL) then
 				ATSW_SpellcastInterrupted();
@@ -670,7 +675,7 @@ function ATSWFrame_Update()
 		ATSWCustomSortButton:SetChecked(false);
 	end
 	for i=1,ATSW_TRADE_SKILLS_DISPLAYED,1 do
-		getglobal("ATSWSkill"..i):Hide();
+		_G["ATSWSkill"..i]:Hide();
 	end
 	if(atsw_orderby[UnitName("player")][atsw_selectedskill]=="nothing" or atsw_orderby[UnitName("player")][atsw_selectedskill]=="custom") then
 		ATSWExpandButtonFrame:Show();
@@ -684,7 +689,7 @@ function ATSWFrame_Update()
 			ATSWRequirementLabel:Hide();
 			ATSWCollapseAllButton:Disable();
 			for i=1, ATSW_MAX_TRADE_SKILL_REAGENTS, 1 do
-				getglobal("ATSWReagent"..i):Hide();
+				_G["ATSWReagent"..i]:Hide();
 			end
 		else
 			ATSWSkillName:Show();
@@ -710,7 +715,7 @@ function ATSWFrame_Update()
 				jumped=jumped+1;
 			until ((skillName and ATSW_Filter(skillName)==true and ATSW_FilterInvSlot(skillName) and ATSW_FilterSubClass(skillName)) or skillIndex>numTradeSkills or skillType=="header");
 			if(skillName) then numAvailable=ATSW_GetNumItemsPossible(skillName); end
-			local skillButton=getglobal("ATSWSkill"..i);
+			local skillButton=_G["ATSWSkill"..i];
 			if(skillIndex<=numTradeSkills) then
 				if(ATSWListScrollFrame:IsVisible()) then
 					skillButton:SetWidth(293);
@@ -739,14 +744,14 @@ function ATSWFrame_Update()
 					else
 						skillButton:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up");
 					end
-					getglobal("ATSWSkill"..i.."Highlight"):SetTexture("Interface\\Buttons\\UI-PlusButton-Hilight");
-					getglobal("ATSWSkill"..i):UnlockHighlight();
+					_G["ATSWSkill"..i.."Highlight"]:SetTexture("Interface\\Buttons\\UI-PlusButton-Hilight");
+					_G["ATSWSkill"..i]:UnlockHighlight();
 				elseif(skillType~="notfound") then
 					if(not skillName)then
 						return;
 					end
 					skillButton:SetNormalTexture("");
-					getglobal("ATSWSkill"..i.."Highlight"):SetTexture("");
+					_G["ATSWSkill"..i.."Highlight"]:SetTexture("");
 					if(atsw_multicount==true) then
 						if ( numAvailable == 0 ) then
 							skillButton:SetText(" "..skillName);
@@ -766,9 +771,9 @@ function ATSWFrame_Update()
 						ATSWHighlightFrame:SetPoint("TOPLEFT", "ATSWSkill"..i, "TOPLEFT", 0, 0);
 						ATSWHighlightFrame:Show();
 						ATSWFrame.numAvailable = numAvailable;
-						getglobal("ATSWSkill"..i):LockHighlight();
+						_G["ATSWSkill"..i]:LockHighlight();
 					else
-						getglobal("ATSWSkill"..i):UnlockHighlight();
+						_G["ATSWSkill"..i]:UnlockHighlight();
 					end
 				end			
 			else
@@ -790,7 +795,7 @@ function ATSWFrame_Update()
 			ATSWRequirementLabel:Hide();
 			ATSWCollapseAllButton:Disable();
 			for i=1, ATSW_MAX_TRADE_SKILL_REAGENTS, 1 do
-				getglobal("ATSWReagent"..i):Hide();
+				_G["ATSWReagent"..i]:Hide();
 			end
 		else
 			ATSWSkillName:Show();
@@ -816,7 +821,7 @@ function ATSWFrame_Update()
 			if(skillIndex) then
 				skillName, skillType, numAvailable, isExpanded = GetTradeSkillInfo(skillIndex);
 				if(skillName) then numAvailable=ATSW_GetNumItemsPossible(skillName); end
-				local skillButton=getglobal("ATSWSkill"..i);
+				local skillButton=_G["ATSWSkill"..i];
 				if(ATSWListScrollFrame:IsVisible()) then
 					skillButton:SetWidth(293);
 				else
@@ -836,14 +841,14 @@ function ATSWFrame_Update()
 					else
 						skillButton:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up");
 					end
-					getglobal("ATSWSkill"..i.."Highlight"):SetTexture("Interface\\Buttons\\UI-PlusButton-Hilight");
-					getglobal("ATSWSkill"..i):UnlockHighlight();
+					_G["ATSWSkill"..i.."Highlight"]:SetTexture("Interface\\Buttons\\UI-PlusButton-Hilight");
+					_G["ATSWSkill"..i]:UnlockHighlight();
 				else
 					if(not skillName)then
 						return;
 					end
 					skillButton:SetNormalTexture("");
-					getglobal("ATSWSkill"..i.."Highlight"):SetTexture("");
+					_G["ATSWSkill"..i.."Highlight"]:SetTexture("");
 					if(atsw_multicount==true) then
 						if ( numAvailable == 0 ) then
 							skillButton:SetText(" "..skillName);
@@ -863,9 +868,9 @@ function ATSWFrame_Update()
 						ATSWHighlightFrame:SetPoint("TOPLEFT", "ATSWSkill"..i, "TOPLEFT", 0, 0);
 						ATSWHighlightFrame:Show();
 						ATSWFrame.numAvailable = numAvailable;
-						getglobal("ATSWSkill"..i):LockHighlight();
+						_G["ATSWSkill"..i]:LockHighlight();
 					else
-						getglobal("ATSWSkill"..i):UnlockHighlight();
+						_G["ATSWSkill"..i]:UnlockHighlight();
 					end
 				end
 			end
@@ -874,14 +879,14 @@ function ATSWFrame_Update()
 	end
 end
 
-function ATSWSkillButton_OnClick(button)
+function ATSWSkillButton_OnClick(self, button)
 	if(button=="LeftButton") then
-		ATSWFrame_SetSelection(this:GetID(),true);
+		ATSWFrame_SetSelection(self:GetID(),true, button);
 		ATSWFrame_Update();
 	end
 end
 
-function ATSWFrame_SetSelection(id,wasClicked)
+function ATSWFrame_SetSelection(id,wasClicked,button)
 	local skillName, skillType, numAvailable, altVerb;
 	local listpos=ATSW_GetSkillListingPos(id);
 	if(atsw_skilllisting[listpos]) then
@@ -893,11 +898,10 @@ function ATSWFrame_SetSelection(id,wasClicked)
 	end
 	if(skillName) then numAvailable=ATSW_GetNumItemsPossible(skillName); end
 	if(IsShiftKeyDown() and skillName~=nil and wasClicked~=nil) then
-		if(arg1=="LeftButton" and (ChatFrameEditBox:IsVisible() or WIM_EditBoxInFocus~=nil)) then
+		if(button=="LeftButton" and (ChatFrameEditBox:IsVisible() or WIM_EditBoxInFocus~=nil)) then
 			ATSW_AddTradeSkillReagentLinksToChatFrame(skillName);
 		end
 	end
-	ATSWHighlightFrame:Show();
 	if(skillType=="header") then
 		ATSWHighlightFrame:Hide();
 		if(atsw_skilllisting[listpos].expanded) then
@@ -959,9 +963,9 @@ function ATSWFrame_SetSelection(id,wasClicked)
 	local numReagents = GetTradeSkillNumReagents(id);
 	for i=1, numReagents, 1 do
 		local reagentName, reagentTexture, reagentCount, playerReagentCount = GetTradeSkillReagentInfo(id, i);
-		local reagent = getglobal("ATSWReagent"..i);
-		local name = getglobal("ATSWReagent"..i.."Name");
-		local count = getglobal("ATSWReagent"..i.."Count");
+		local reagent = _G["ATSWReagent"..i];
+		local name = _G["ATSWReagent"..i.."Name"];
+		local count = _G["ATSWReagent"..i.."Count"];
 		if(not reagentName or not reagentTexture) then
 			reagent:Hide();
 		else
@@ -988,7 +992,7 @@ function ATSWFrame_SetSelection(id,wasClicked)
 	end
 	
 	for i=numReagents+1, ATSW_MAX_TRADE_SKILL_REAGENTS, 1 do
-		getglobal("ATSWReagent"..i):Hide();
+		_G["ATSWReagent"..i]:Hide();
 	end
 
 	local spellFocus=BuildColoredListString(GetTradeSkillTools(id));
@@ -1188,9 +1192,9 @@ function ATSW_FilterSubClass(skillName)
 	end	
 end
 
-function ATSWCollapseAllButton_OnClick()
-	if (this.collapsed) then
-		this.collapsed = nil;
+function ATSWCollapseAllButton_OnClick(self)
+	if (self.collapsed) then
+		self.collapsed = nil;
 		if(atsw_orderby[UnitName("player")][atsw_selectedskill]=="custom") then
 			if(atsw_customheaders[UnitName("player")]) then
 				if(atsw_customheaders[UnitName("player")][atsw_selectedskill]) then
@@ -1206,7 +1210,7 @@ function ATSWCollapseAllButton_OnClick()
 			end
 		end
 	else
-		this.collapsed = 1;
+		self.collapsed = 1;
 		ATSWListScrollFrameScrollBar:SetValue(0);
 		if(atsw_orderby[UnitName("player")][atsw_selectedskill]=="custom") then
 			if(atsw_customheaders[UnitName("player")]) then
@@ -1233,10 +1237,10 @@ function ATSWFrame_UpdateQueue()
 
 	for i=1,4,1 do
 		local jobindex=i+offset;
-		local queueCount=getglobal("ATSWQueueItem"..i.."CountText");
-		local queueName=getglobal("ATSWQueueItem"..i.."NameText");
-		local queueItem=getglobal("ATSWQueueItem"..i);
-		local queueButton=getglobal("ATSWQueueItem"..i.."DeleteButton");
+		local queueCount=_G["ATSWQueueItem"..i.."CountText"];
+		local queueName=_G["ATSWQueueItem"..i.."NameText"];
+		local queueItem=_G["ATSWQueueItem"..i];
+		local queueButton=_G["ATSWQueueItem"..i.."DeleteButton"];
 		if(atsw_queue[jobindex]) then
 			queueCount:SetText(atsw_queue[jobindex].count.."x");
 			queueName:SetText(atsw_queue[jobindex].name);
@@ -1405,11 +1409,8 @@ function ATSW_Enchant()
 end
 
 function ATSW_SetColumnWidth(width, frame)
-	if not frame then
-    	frame = this;
-	end
 	frame:SetWidth(width);
-  	getglobal(frame:GetName().."Middle"):SetWidth(width - 9);
+  	_G[frame:GetName().."Middle"]:SetWidth(width - 9);
 	frame:Disable();
 end
 
@@ -2023,13 +2024,13 @@ end
 function ATSW_ShowNecessaryReagents()
 	ATSW_NoteNecessaryItemsForQueue();
 	for i=1,20,1 do
-		local count=getglobal("ATSWRFReagent"..i.."Count");
-		local item=getglobal("ATSWRFReagent"..i.."Item");
-		local inv=getglobal("ATSWRFReagent"..i.."Inventory");
-		local bank=getglobal("ATSWRFReagent"..i.."Bank");
-		local merchant=getglobal("ATSWRFReagent"..i.."Merchant");
-		local alt=getglobal("ATSWRFReagent"..i.."Alt");
-		local missing=getglobal("ATSWRFReagent"..i.."Missing");
+		local count=_G["ATSWRFReagent"..i.."Count"];
+		local item=_G["ATSWRFReagent"..i.."Item"];
+		local inv=_G["ATSWRFReagent"..i.."Inventory"];
+		local bank=_G["ATSWRFReagent"..i.."Bank"];
+		local merchant=_G["ATSWRFReagent"..i.."Merchant"];
+		local alt=_G["ATSWRFReagent"..i.."Alt"];
+		local missing=_G["ATSWRFReagent"..i.."Missing"];
 		if(atsw_necessaryitems[i]) then
 			local items_inventory=ATSWInv_GetItemCount(atsw_necessaryitems[i].name);
 			local items_bank=ATSWBank_GetItemCount(atsw_necessaryitems[i].name);
@@ -2086,11 +2087,11 @@ function ATSW_ShowNecessaryReagents()
 	ShowUIPanel(ATSWReagentFrame);
 end
 
-function ATSWItemButton_OnEnter()
-    if(this.link) then
-    	GameTooltip:SetOwner(this, "ANCHOR_NONE");
-        GameTooltip:SetPoint("BOTTOMLEFT",this:GetName(),"TOPLEFT");
-	GameTooltip:SetHyperlink(string.gsub(this.link, "|c(%x+)|H(item:%d+:%d+:%d+:%d+)|h%[(.-)%]|h|r", "%2"));
+function ATSWItemButton_OnEnter(self)
+    if(self.link) then
+    	GameTooltip:SetOwner(self, "ANCHOR_NONE");
+        GameTooltip:SetPoint("BOTTOMLEFT",self:GetName(),"TOPLEFT");
+	GameTooltip:SetHyperlink(string.gsub(self.link, "|c(%x+)|H(item:%d+:%d+:%d+:%d+)|h%[(.-)%]|h|r", "%2"));
         GameTooltip:Show();
     end
 end
@@ -2244,7 +2245,7 @@ function ATSW_GetItemMinLevel(tradeskillid)
 	local linecount=ATSWScanTooltip:NumLines();
 	local k;
 	for k=1,linecount,1 do
-		local ttextLeft = getglobal("ATSWScanTooltipTextLeft"..k);
+		local ttextLeft = _G["ATSWScanTooltipTextLeft"..k];
 		if(ttextLeft) then
 			local text=ttextLeft:GetText();
 			if(text) then
@@ -2263,7 +2264,7 @@ end
 function ATSW_GetItemRarity(tradeskillid)
 	ATSWScanTooltip:SetOwner(ATSWFrame, "ANCHOR_TOPLEFT");
 	ATSWScanTooltip:SetTradeSkillItem(tonumber(tradeskillid,10));
-	local ttextLeft = getglobal("ATSWScanTooltipTextLeft1");
+	local ttextLeft = _G["ATSWScanTooltipTextLeft1"];
 	if(ttextLeft) then
 		local cr,cg,cb=ttextLeft:GetTextColor();
 		if(cr) then
@@ -2351,12 +2352,12 @@ end
 
 atsw_recipetooltip=true;
 
-function ATSW_DisplayTradeskillTooltip()
+function ATSW_DisplayTradeskillTooltip(self)
 	if(atsw_recipetooltip==false) then return; end
-	ATSWTradeskillTooltip:SetOwner(this, "ANCHOR_BOTTOMRIGHT",-300);
+	ATSWTradeskillTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT",-300);
 	ATSWTradeskillTooltip:SetBackdropColor(0,0,0,1);
 
-	local tradeskillid=this:GetID();
+	local tradeskillid=self:GetID();
 	local skillName, skillType, numAvailable;
 	local listpos=ATSW_GetSkillListingPos(tradeskillid);
 	if(atsw_skilllisting[listpos]) then
@@ -2391,7 +2392,7 @@ function ATSW_DisplayTradeskillTooltip()
 				end				
 				ATSWTradeskillTooltip:AddLine(atsw_necessaryitems[i].cnt.."x "..atsw_necessaryitems[i].name.." ("..items_inventory.." / "..items_bank.." / "..items_alt..")"..items_merchant);
 				local r,g,b=ATSW_GetLinkColorRGB(atsw_necessaryitems[i].link);
-				getglobal("ATSWTradeskillTooltipTextLeft"..(4+i)):SetVertexColor(r/256, g/256, b/256);
+				_G["ATSWTradeskillTooltipTextLeft"..(4+i)]:SetVertexColor(r/256, g/256, b/256);
 			end
 		end
 		ATSWTradeskillTooltip:AddLine(ATSW_TOOLTIP_LEGEND);
@@ -2753,13 +2754,13 @@ function ATSWAuction_UpdateReagentList()
 	local reagents=table.getn(necessary);
 	local offset=FauxScrollFrame_GetOffset(ATSWSLScrollFrame);
 	for i=1,5,1 do
-		local count=getglobal("ATSWSLFReagent"..i.."Count");
-		local item=getglobal("ATSWSLFReagent"..i.."Item");
-		local inv=getglobal("ATSWSLFReagent"..i.."Inventory");
-		local bank=getglobal("ATSWSLFReagent"..i.."Bank");
-		local merchant=getglobal("ATSWSLFReagent"..i.."Merchant");
-		local alt=getglobal("ATSWSLFReagent"..i.."Alt");
-		local missing=getglobal("ATSWSLFReagent"..i.."Missing");
+		local count=_G["ATSWSLFReagent"..i.."Count"];
+		local item=_G["ATSWSLFReagent"..i.."Item"];
+		local inv=_G["ATSWSLFReagent"..i.."Inventory"];
+		local bank=_G["ATSWSLFReagent"..i.."Bank"];
+		local merchant=_G["ATSWSLFReagent"..i.."Merchant"];
+		local alt=_G["ATSWSLFReagent"..i.."Alt"];
+		local missing=_G["ATSWSLFReagent"..i.."Missing"];
 		if(necessary[offset+i]) then
 			local items_inventory=ATSWInv_GetItemCount(necessary[offset+i].name);
 			local items_bank=ATSWBank_GetItemCount(necessary[offset+i].name);
@@ -2960,14 +2961,14 @@ end
 
 atsw_displayreagentlist=false;
 
-function ATSWAllReagentListCharDropDown_OnLoad()
-	UIDropDownMenu_Initialize(this, ATSWAllReagentListCharDropDown_Initialize);
-	UIDropDownMenu_SetWidth(this, 400);
+function ATSWAllReagentListCharDropDown_OnLoad(self)
+	UIDropDownMenu_Initialize(self, ATSWAllReagentListCharDropDown_Initialize);
+	UIDropDownMenu_SetWidth(self, 400);
 	UIDropDownMenu_SetSelectedID(ATSWAllReagentListCharDropDown, 1);
 end
 
-function ATSWAllReagentListCharDropDown_OnShow()
-	UIDropDownMenu_Initialize(this, ATSWAllReagentListCharDropDown_Initialize);
+function ATSWAllReagentListCharDropDown_OnShow(self)
+	UIDropDownMenu_Initialize(self, ATSWAllReagentListCharDropDown_Initialize);
 	UIDropDownMenu_SetSelectedID(ATSWAllReagentListCharDropDown, 1);
 	FauxScrollFrame_SetOffset(ATSWARLFScrollFrame, 0);
 	ATSWAllReagentList_ScrollUpdate();
@@ -3015,9 +3016,9 @@ function ATSWAllReagentListCharDropDown_Initialize()
 	end
 end
 
-function ATSWAllReagentListCharDropDownButton_OnClick()
-	UIDropDownMenu_SetSelectedID(ATSWAllReagentListCharDropDown, this:GetID());
-	local charname, skillname=string.match(this:GetText(), "(%w*) %- (%w*)");
+function ATSWAllReagentListCharDropDownButton_OnClick(self)
+	UIDropDownMenu_SetSelectedID(ATSWAllReagentListCharDropDown, self:GetID());
+	local charname, skillname=string.match(self:GetText(), "(%w*) %- (%w*)");
 	ATSWAllReagentList_Update(charname, skillname);
 	FauxScrollFrame_SetOffset(ATSWARLFScrollFrame, 0);
 end
@@ -3040,12 +3041,12 @@ function ATSWAllReagentList_Update(charname, skillname)
 		end
 	end
 	for i=1+offset, 7+offset, 1 do
-		local lcount=getglobal("ATSWARLFReagent"..(i-offset).."Count");
-		local lname=getglobal("ATSWARLFReagent"..(i-offset).."Item");
-		local lorigcount=getglobal("ATSWARLFReagent"..(i-offset).."OrigCount");
-		local llocalcount=getglobal("ATSWARLFReagent"..(i-offset).."LocalCount");
-		local laltcount=getglobal("ATSWARLFReagent"..(i-offset).."AltCount");
-		local lmerchant=getglobal("ATSWARLFReagent"..(i-offset).."Merchant");
+		local lcount=_G["ATSWARLFReagent"..(i-offset).."Count"];
+		local lname=_G["ATSWARLFReagent"..(i-offset).."Item"];
+		local lorigcount=_G["ATSWARLFReagent"..(i-offset).."OrigCount"];
+		local llocalcount=_G["ATSWARLFReagent"..(i-offset).."LocalCount"];
+		local laltcount=_G["ATSWARLFReagent"..(i-offset).."AltCount"];
+		local lmerchant=_G["ATSWARLFReagent"..(i-offset).."Merchant"];
 		if(necessary[i]) then
 			local localcount=ATSWInv_GetItemCount(necessary[i].name)+ATSWBank_GetItemCount(necessary[i].name);
 			local origcount=ATSWAlt_GetItemCount(necessary[i].name, charname);
@@ -3144,8 +3145,8 @@ function ATSW_SkipSlowScan()
 	ATSW_FinalizeSlowScan();
 end
 
-function ATSWScanDelayFrame_OnUpdate()
-	atsw_scan_timeout=atsw_scan_timeout-arg1;
+function ATSWScanDelayFrame_OnUpdate(self, elapsed)
+	atsw_scan_timeout=atsw_scan_timeout-elapsed;
 	if(atsw_scan_timeout<=0) then
 		atsw_scan_timeout=atsw_scan_delay;
 		if(atsw_scan_state==1) then

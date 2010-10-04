@@ -59,7 +59,7 @@ function ATSWCS_UpdateSkillList()
 	local totalcount=table.getn(atsw_uncategorized);
 	local offset=FauxScrollFrame_GetOffset(ATSWCSUListScrollFrame);
 	for i=1,23,1 do
-		local skillbutton=getglobal("ATSWCSSkill"..i);
+		local skillbutton=_G["ATSWCSSkill"..i];
 		if(atsw_uncategorized[offset+i]) then		
 			skillbutton:SetText(atsw_uncategorized[offset+i].name);
 			skillbutton:Show();
@@ -80,8 +80,8 @@ function ATSWCS_UpdateSkillList()
 		local skillbutton=nil;
 		local skillframe=nil;
 		if(i>=1 and i<=17) then
-			skillbutton=getglobal("ATSWCSCSkill"..i.."SkillButton");
-			skillframe=getglobal("ATSWCSCSkill"..i);
+			skillbutton=_G["ATSWCSCSkill"..i.."SkillButton"];
+			skillframe=_G["ATSWCSCSkill"..i];
 		end
 		if(atsw_customheaders[UnitName("player")][atsw_selectedskill][header] and skill==0) then
 			if(i>=1 and i<=17) then
@@ -98,13 +98,13 @@ function ATSWCS_UpdateSkillList()
 				header=header+1;
 			end
 			if(i>=1 and i<=17) then
-				getglobal("ATSWCSCSkill"..i.."SkillButtonHighlight"):SetTexture("Interface\\Buttons\\UI-PlusButton-Hilight");
+				_G["ATSWCSCSkill"..i.."SkillButtonHighlight"]:SetTexture("Interface\\Buttons\\UI-PlusButton-Hilight");
 				skillbutton:UnlockHighlight();
 				skillframe:Show();
 				skillbutton:Show();
-				getglobal("ATSWCSCSkill"..i.."MoveUp"):Show();
-				getglobal("ATSWCSCSkill"..i.."MoveDown"):Show();
-				getglobal("ATSWCSCSkill"..i.."Delete"):Show();
+				_G["ATSWCSCSkill"..i.."MoveUp"]:Show();
+				_G["ATSWCSCSkill"..i.."MoveDown"]:Show();
+				_G["ATSWCSCSkill"..i.."Delete"]:Show();
 			end
 		elseif(atsw_opencategory==header) then
 			if(atsw_customsorting[UnitName("player")][atsw_selectedskill] and atsw_customsorting[UnitName("player")][atsw_selectedskill][atsw_customheaders[UnitName("player")][atsw_selectedskill][header].name]) then
@@ -116,10 +116,10 @@ function ATSWCS_UpdateSkillList()
 						skillframe:Show();
 						skillbutton:Show();
 						skillbutton:SetNormalTexture("");
-						getglobal("ATSWCSCSkill"..i.."MoveUp"):Show();
-						getglobal("ATSWCSCSkill"..i.."MoveDown"):Show();
-						getglobal("ATSWCSCSkill"..i.."Delete"):Show();
-						getglobal("ATSWCSCSkill"..i.."SkillButtonHighlight"):SetTexture("");
+						_G["ATSWCSCSkill"..i.."MoveUp"]:Show();
+						_G["ATSWCSCSkill"..i.."MoveDown"]:Show();
+						_G["ATSWCSCSkill"..i.."Delete"]:Show();
+						_G["ATSWCSCSkill"..i.."SkillButtonHighlight"]:SetTexture("");
 						skillbutton:GetParent().btype="recipe";
 					end
 					skill=skill+1;
@@ -132,10 +132,10 @@ function ATSWCS_UpdateSkillList()
 							skillframe:Show();
 							skillbutton:Show();
 							skillbutton:SetNormalTexture("");
-							getglobal("ATSWCSCSkill"..i.."SkillButtonHighlight"):SetTexture("");
-							getglobal("ATSWCSCSkill"..i.."MoveUp"):Hide();
-							getglobal("ATSWCSCSkill"..i.."MoveDown"):Hide();
-							getglobal("ATSWCSCSkill"..i.."Delete"):Hide();
+							_G["ATSWCSCSkill"..i.."SkillButtonHighlight"]:SetTexture("");
+							_G["ATSWCSCSkill"..i.."MoveUp"]:Hide();
+							_G["ATSWCSCSkill"..i.."MoveDown"]:Hide();
+							_G["ATSWCSCSkill"..i.."Delete"]:Hide();
 						end
 					else
 						i=i-1;
@@ -152,10 +152,10 @@ function ATSWCS_UpdateSkillList()
 						skillframe:Show();
 						skillbutton:Show();
 						skillbutton:SetNormalTexture("");
-						getglobal("ATSWCSCSkill"..i.."SkillButtonHighlight"):SetTexture("");
-						getglobal("ATSWCSCSkill"..i.."MoveUp"):Hide();
-						getglobal("ATSWCSCSkill"..i.."MoveDown"):Hide();
-						getglobal("ATSWCSCSkill"..i.."Delete"):Hide();
+						_G["ATSWCSCSkill"..i.."SkillButtonHighlight"]:SetTexture("");
+						_G["ATSWCSCSkill"..i.."MoveUp"]:Hide();
+						_G["ATSWCSCSkill"..i.."MoveDown"]:Hide();
+						_G["ATSWCSCSkill"..i.."Delete"]:Hide();
 					end
 				else
 					i=i-1;
@@ -292,13 +292,13 @@ function ATSWCS_MoveDown(skillName)
 	ATSWCS_UpdateSkillList();
 end
 
-function ATSWCS_Delete(skillName,onlySkill)
-	if(this:GetParent().btype=="header" and onlySkill==nil) then
+function ATSWCS_Delete(self,skillName,onlySkill)
+	if(self:GetParent().btype=="header" and onlySkill==nil) then
 		for i=1,table.getn(atsw_customheaders[UnitName("player")][atsw_selectedskill]),1 do
 			if(atsw_customheaders[UnitName("player")][atsw_selectedskill][i].name==skillName) then
 				if(atsw_customsorting[UnitName("player")][atsw_selectedskill][atsw_customheaders[UnitName("player")][atsw_selectedskill][i].name]) then
 					for j=table.getn(atsw_customsorting[UnitName("player")][atsw_selectedskill][atsw_customheaders[UnitName("player")][atsw_selectedskill][i].name]),1,-1 do
-						ATSWCS_Delete(atsw_customsorting[UnitName("player")][atsw_selectedskill][atsw_customheaders[UnitName("player")][atsw_selectedskill][i].name][j].name,true);
+						ATSWCS_Delete(self,atsw_customsorting[UnitName("player")][atsw_selectedskill][atsw_customheaders[UnitName("player")][atsw_selectedskill][i].name][j].name,true);
 					end
 				end
 				table.remove(atsw_customheaders[UnitName("player")][atsw_selectedskill],i);
@@ -324,8 +324,8 @@ function ATSWCS_Delete(skillName,onlySkill)
 	ATSWCS_UpdateSkillList();
 end
 
-function ATSWCSCSkillButton_OnClick(skillName)
-	if(this:GetParent().btype=="header") then
+function ATSWCSCSkillButton_OnClick(self, skillName)
+	if(self:GetParent().btype=="header") then
 		for i=1,table.getn(atsw_customheaders[UnitName("player")][atsw_selectedskill]),1 do
 			if(atsw_customheaders[UnitName("player")][atsw_selectedskill][i].name==skillName) then
 				if(atsw_opencategory==i) then
